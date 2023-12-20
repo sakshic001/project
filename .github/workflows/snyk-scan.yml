@@ -34,7 +34,7 @@ jobs:
 
       - name: Run Snyk Test
         run: |
-          snyk test --file=.
+          snyk test --file=. --project-type=web
           snyk monitor --file=. # If you want to monitor the project on Snyk
 
       - name: Upload Snyk Test Results
