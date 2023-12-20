@@ -3,7 +3,7 @@ name: Snyk Security Scan
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   snyk_scan:
@@ -12,6 +12,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install Snyk CLI
+        run: |
+          npm install -g snyk
 
       - name: Install Dependencies
         run: |
@@ -28,4 +37,3 @@ jobs:
         with:
           name: snyk-results
           path: .snyk
-
