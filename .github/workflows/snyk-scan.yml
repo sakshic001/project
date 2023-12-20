@@ -22,6 +22,10 @@ jobs:
         run: |
           npm install -g snyk
 
+      - name: Authenticate Snyk
+        run: |
+          snyk auth
+
       - name: Install Dependencies
         run: |
           # Add commands here if needed to set up dependencies
