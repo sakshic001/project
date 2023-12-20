@@ -13,6 +13,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Create Dummy package.json
+        run: echo "{}" > package.json
+
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -34,8 +37,8 @@ jobs:
 
       - name: Run Snyk Test
         run: |
-          snyk test --file=. --project-type=web
-          snyk monitor --file=. # If you want to monitor the project on Snyk
+          snyk test --file=package.json --project-type=web
+          snyk monitor --file=package.json # If you want to monitor the project on Snyk
 
       - name: Upload Snyk Test Results
         if: always()
