@@ -24,6 +24,7 @@ jobs:
 
       - name: Authenticate Snyk
         run: |
+          echo "SNYK_TOKEN=${{ secrets.SNYK_TOKEN }}" >> $GITHUB_ENV
           snyk auth
 
       - name: Install Dependencies
