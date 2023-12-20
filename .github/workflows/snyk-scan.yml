@@ -22,10 +22,11 @@ jobs:
         run: |
           npm install -g snyk
 
+      - name: Set up environment
+        run: echo "SNYK_TOKEN=${{ secrets.SNYK_TOKEN }}" >> $GITHUB_ENV
+
       - name: Authenticate Snyk
-        run: |
-          echo "SNYK_TOKEN=***" >> $GITHUB_ENV
-          snyk auth
+        run: snyk auth $SNYK_TOKEN
 
       - name: Install Dependencies
         run: |
